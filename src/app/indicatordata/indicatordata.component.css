@@ -1,0 +1,27 @@
+.inddata{
+    height: 600px !important;
+    overflow: auto
+}
+
+.inddatatable{
+    width: 450px;
+    /*background-color: hsla(255, 100%, 29%, 0.05);
+    background-color: #f5f5f5;*/
+    background-color: #f5f5f5;
+
+    color: black;
+    font-size: 14pt;
+    font-weight: thin;
+    font-family: arial,sans-serif;
+    text-align: center;
+}
+
+.inddatath{
+    text-align: center !important;
+    background-color: #404040 !important;
+    color: white;
+    font-weight: thin;
+
+
+}
+

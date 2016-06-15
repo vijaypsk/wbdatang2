@@ -1,0 +1,19 @@
+ <md-card>
+<div class="container inddata">
+  <h2>{{indicatorCode}}</h2>
+  <table class="table table-hover table-condensed inddatatable">
+    <thead>
+      <tr>
+        <th class="inddatath">Country</th>
+        <th class="inddatath">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td>{{result.cname}}</td>
+        <td>{{result.value | number:'2.1-5'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</md-card>

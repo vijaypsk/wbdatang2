@@ -1,0 +1,12 @@
+<h2 md-subheader>Indicators</h2>
+<div>
+<md-nav-list>
+  <md-list-item *ngFor="let idr of indicators">
+     <!--<h4 md-line class="indicator-background">{{ idr.IndicatorName }}</h4>-->
+           <input type="hidden" value="{{ idr.IndicatorCode }}" #icode/>
+           <input type="hidden" value="{{ idr.IndicatorName }}" #iname/>
+           <button md-button  (click)="getData(icode.value,iname.value)">{{ idr.IndicatorName }}</button>
+
+  </md-list-item>
+</md-nav-list>
+</div>

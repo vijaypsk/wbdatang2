@@ -1,0 +1,22 @@
+<span style="background-color: #f5f5f5;width: 100%;display: inline-block"><img style="float:left;padding-right: 10px" src="app/World_Bank_logo.svg.png" /><h1>{{title}}</h1></span>
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="side" opened="true" align="start" class="app-sidenav">
+    <app-indicatorlist (icode)="indicatorCode=$event" (iname)="indicatorName=$event">Loading...</app-indicatorlist>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button> {{indicatorName}}  
+    <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+  <span style="margin-left:37%;display: inline-block">
+    <h4 style="float:left;padding-right: 20px">Year</h4>  <app-dropdown [values]="dropdownValues" (select)="action($event)"></app-dropdown>
+  </span>
+     
+      <app-indicatordata [indCode]="indicatorCode" [year]="year">Loading..</app-indicatordata>
+    
+
+  <button md-button></button>
+
+
+</md-sidenav-layout>
