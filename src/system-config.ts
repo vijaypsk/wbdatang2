@@ -51,6 +51,7 @@ const barrels: string[] = [
   'app/indicatorlist',
   'app/indicatordata',
   'app/dropdown',
+  'app/chart',
   /** @cli-barrel */
 ];
 

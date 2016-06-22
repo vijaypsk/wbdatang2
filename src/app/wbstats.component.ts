@@ -22,8 +22,8 @@ import {DropdownComponent} from './dropdown';
 })
 export class WbstatsAppComponent {
   title = 'World Bank Statistics!';
-  indicatorCode='SP.POP.TOTL';
-  indicatorName='Population, total';
+  indicatorCode='NY.GDP.MKTP.KD.ZG';
+  indicatorName='GDP growth (annual %)';
   year="2000";
   dropdownValues=[{value:"2000",label:"2000"},{value:"2001",label:"2001"},{value:"2002",label:"2002"},
   {value:"2003",label:"2003"},{value:"2004",label:"2004"},{value:"2005",label:"2005"},

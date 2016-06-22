@@ -1,4 +1,9 @@
- <md-card>
+
+<md-tab-group>
+  <md-tab>
+    <template md-tab-label>Tabular</template>
+    <template md-tab-content>
+      <md-card>
 <div class="container inddata">
   <h2>{{indicatorCode}}</h2>
   <table class="table table-hover table-condensed inddatatable">
@@ -17,3 +22,16 @@
   </table>
 </div>
 </md-card>
+      
+    </template>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>Visual (Top/Bottom 10)</template>
+    <template md-tab-content>
+      <app-chart [data]="chartTop10Data">Loading...</app-chart>
+      <br>
+      <app-chart [data]="chartBottom10Data">Loading...</app-chart>
+    </template>
+  </md-tab>
+</md-tab-group>
+

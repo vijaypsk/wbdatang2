@@ -9,14 +9,11 @@
     </button> {{indicatorName}}  
     <span class="app-toolbar-filler"></span>
   </md-toolbar>
-  <span style="margin-left:37%;display: inline-block">
-    <h4 style="float:left;padding-right: 20px">Year</h4>  <app-dropdown [values]="dropdownValues" (select)="action($event)"></app-dropdown>
-  </span>
-     
-      <app-indicatordata [indCode]="indicatorCode" [year]="year">Loading..</app-indicatordata>
-    
+  
 
   <button md-button></button>
-
-
+      <span style="margin-left:37%;display: inline-block">
+    <h4 style="float:left;padding-right: 20px">Year</h4>  <app-dropdown [values]="dropdownValues" (select)="action($event)"></app-dropdown>
+  </span>
+<app-indicatordata [indCode]="indicatorCode" [year]="year">Loading..</app-indicatordata>
 </md-sidenav-layout>

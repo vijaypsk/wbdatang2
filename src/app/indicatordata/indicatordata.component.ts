@@ -5,10 +5,7 @@ import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs';
 import {DataService} from '../data.service';
 import {Result} from './result.component';
-//import {nvD3} from '//cdn.rawgit.com/krispo/ng2-nvd3/v1.1.0/lib/ng2-nvd3.ts';
-//import {nvD3} from 'ng2-nvd3';
-
-//declare let d3: any;
+import {ChartComponent} from './chart/chart.component';
 
 
 @Component({
@@ -17,14 +14,15 @@ import {Result} from './result.component';
   styleUrls: ['app/indicatordata/indicatordata.component.css'],
   providers: [DataService],
   inputs: ['indCode','year'],
-  directives: [MD_GRID_LIST_DIRECTIVES, MD_LIST_DIRECTIVES, MD_CARD_DIRECTIVES, MD_TABS_DIRECTIVES,],
+  directives: [MD_GRID_LIST_DIRECTIVES, MD_LIST_DIRECTIVES, MD_CARD_DIRECTIVES, MD_TABS_DIRECTIVES,ChartComponent,],
 })
 
 export class IndicatordataComponent implements OnInit, OnChanges, AfterViewInit {
   results: Result[];
   indCode: string;
   year: string;
-  
+  chartTop10Data: any;
+  chartBottom10Data: any;
 
 
   constructor(private dataService: DataService) { }
@@ -33,6 +31,7 @@ export class IndicatordataComponent implements OnInit, OnChanges, AfterViewInit 
     console.log(this.indCode);
     this.dataService.getResultData(this.indCode,this.year).subscribe(d => {
       this.results = d;
+      this.populateChartData();
       //console.log(d);
     });
     
@@ -43,6 +42,7 @@ export class IndicatordataComponent implements OnInit, OnChanges, AfterViewInit 
     console.log(this.indCode);
     this.dataService.getResultData(this.indCode,this.year).subscribe(d => {
       this.results = d;
+      this.populateChartData();
       //console.log(d);
     });
     
@@ -54,5 +54,40 @@ export class IndicatordataComponent implements OnInit, OnChanges, AfterViewInit 
   ngAfterViewInit() {
     //console.log(this.chartC.nativeElement.id);
   }
+
+
+  private populateChartData() {
+    this.populateTop10();
+    this.populateBottom10();
+  }
+
+  private populateTop10(){
+    let cData = [];
+    for (let i = 0;i<10;i++){
+       let cd = {"cname":this.results[i].cname,"value":this.results[i].value};
+       cData.push(cd);
+    }
+    this.chartTop10Data = [];
+    console.log(this.chartTop10Data);
+    this.chartTop10Data.push({key:this.indCode,values:cData});
+  }
+
+
+  private populateBottom10(){
+    let cData = [];
+    for (let i = this.results.length-1,j=0;j<10;i--){
+       if(this.results[i].value!=0)
+       {
+        let cd = {"cname":this.results[i].cname,"value":this.results[i].value};
+        cData.push(cd);
+        j++;
+       }
+    }
+    this.chartBottom10Data = [];
+    console.log(this.chartBottom10Data);
+    this.chartBottom10Data.push({key:this.indCode,values:cData});
+  }
+
+  
 
 }
